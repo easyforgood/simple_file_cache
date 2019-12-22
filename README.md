@@ -19,6 +19,6 @@ def do_job():
 rs = load_file(file='export.json', type='json')
 
 # usage 3: dump file as fast as
-rs = dump_file(file='export.json', type='json')
+rs = dump_file(file='export.json', type='json', data=data)
 ```
 
