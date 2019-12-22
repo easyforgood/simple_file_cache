@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="simple_file_cache", # Replace with your own username
-    version="0.0.1",
+    version="0.0.5",
     author="Sip",
     author_email="siplexy.pi@outlook.com",
     description="Simple File Cache based on pickle or json",
