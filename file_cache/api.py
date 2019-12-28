@@ -31,7 +31,7 @@ config = {
 }
 
 
-def file_cache(file='cache.dump', type='pickle'):
+def file_cache(file='cache.dump', type='pickle', filefunc=None):
     conf = config[type]
     dump = conf.get('dump')
     load = conf.get('load')
@@ -42,6 +42,9 @@ def file_cache(file='cache.dump', type='pickle'):
         @wraps(f)
         def wrapper(*args, **kwds):
             # dynamic file name generate
+            fname = file
+            if filefunc:
+                fname = filefunc(*args, **kwds)
             # try:
             #     with open_read_file(file) as fp:
             #         ret = load(fp)
@@ -50,11 +53,11 @@ def file_cache(file='cache.dump', type='pickle'):
             # except Exception as e:
             #     logging.debug(e)
             #     pass
-            ret = load_file(file, type)
+            ret = load_file(fname, type)
             if ret:
                 return ret
             ret = f(*args, **kwds)
-            dump_file(file, type, ret)
+            dump_file(fname, type, ret)
             return ret
 
         return wrapper
