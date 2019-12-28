@@ -2,7 +2,7 @@
 Python Simple cache based on pickle or json file
 
 
-
+> pip install simple_file_cache
 
 
 ## Usage
